@@ -1,2 +1,2 @@
 #!/bin/bash
-chmod 664 *ll*
+chmod 354 *ll*
