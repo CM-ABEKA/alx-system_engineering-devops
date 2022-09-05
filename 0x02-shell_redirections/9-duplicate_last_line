@@ -1,0 +1,2 @@
+#!/bin/bash
+tail -n 1 iacta | xargs -I last_line echo last_line >> iacta
