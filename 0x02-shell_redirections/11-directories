@@ -1,2 +1,2 @@
 #!/bin/bash
-ls -la ./ | grep ^d | wc -l
+tree -d | wc -l
