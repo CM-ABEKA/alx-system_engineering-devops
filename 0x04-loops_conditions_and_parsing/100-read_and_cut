@@ -1,10 +1,8 @@
 #!/usr/bin/env bash
 #print content of usr file
 #
-#id, username and home directory
-exec < /etc/passwd
-
-while read -r passwd_output
+#id, username and home director
+cut -d: -f1,3,6 < /etc/passwd | while read -r passwd_output
 do
-	echo "$passwd_output" | cut -d':' -f1,3,6
+	echo "$passwd_output" 
 done
