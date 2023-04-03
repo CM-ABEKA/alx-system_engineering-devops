@@ -5,7 +5,7 @@ package { 'python3-pip':
 
 # Installing required dependencies for Flask
 package { ['python3-setuptools', 'python3-wheel']:
-  ensure => 'installed',
+  ensure  => 'installed',
   require => Package['python3-pip'],
 }
 
@@ -25,9 +25,9 @@ file { '/usr/local/bin/flask':
 
 # Executed after Flask installation is successful
 exec { 'flask_install_success':
-  command => 'echo "Notice: /Stage[main]/Main/Package[flask]/ensure: created"',
-  path    => ['/usr/bin', '/usr/sbin'],
-  onlyif  => 'which flask',
+  command   => 'echo "Notice: /Stage[main]/Main/Package[flask]/ensure: created"',
+  path      => ['/usr/bin', '/usr/sbin'],
+  onlyif    => 'which flask',
   logoutput => true,
-  unless => 'test -f /usr/local/bin/flask',
+  unless    => 'test -f /usr/local/bin/flask',
 }
