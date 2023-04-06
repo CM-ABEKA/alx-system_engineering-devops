@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+
+server="54.144.142.87"
+keyfile="~/.ssh/school"
+user="ubuntu"
+
+echo "keyfile: $keyfile"
+echo "server: $server"
+
+ssh -i "$keyfile" "$user@$server"
