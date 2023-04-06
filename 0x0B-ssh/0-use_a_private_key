@@ -1,7 +1,4 @@
 #!/usr/bin/env bash
 # this script ssh's to a remote server using a keyfile
-server="54.144.142.87"
-keyfile="~/.ssh/school"
-user="ubuntu"
-
-ssh -i "$keyfile" "$user@$server"
+# user is ubuntu, keyfile in ~/.ssh/school
+ssh -i ~/.ssh/school ubuntu@54.144.142.87
