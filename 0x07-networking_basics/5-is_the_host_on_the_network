@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+# Pings 5 times the url passed as argument
+
+ping -c 5 $1
