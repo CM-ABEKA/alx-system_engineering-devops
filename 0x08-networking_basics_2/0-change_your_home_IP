@@ -10,4 +10,4 @@ if grep -q 'facebook.com' ~/hosts.new; then
 else
 	sed -i '$a\'"8.8.8.8	facebook.com" ~/hosts.new
 fi
-cp -f ~/hosts.new /etc/hosts
+cat ~/hosts.new > /etc/hosts
