@@ -1,10 +1,10 @@
 #!/usr/bin/env bash
 # Pings 5 times the url passed as argument
 
-if [ -z "$1"];
+if [ "$1" ];
 then
+	ping -c 5 "$1"
+else
 	echo "Usage: $0 {IP_ADDRESS}"
 	exit 1
 fi
-
-ping -c 5 "$1"
