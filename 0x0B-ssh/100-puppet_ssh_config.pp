@@ -1,12 +1,14 @@
-#!/usr/bin/env bash
 # Puppet manifest to change ssh config file.
 
-file { 'etc/ssh/ssh_config':
-	ensure => present,
-	content => "
-		#SSH client configuration
-		host*
-		IdentityFile ~/.ssh/school
-		PasswordAuthentication no
-		",
+
+file_line { 'Remove Password Auth':
+	ensure 	=> 'present',
+	path 	=> '/etc/ssh/ssh_config',
+	line	=> '    PasswordAuthentication no',
+}
+
+file_line { 'Declare Identity File':
+	ensure	=> 'present',
+	path	=> '/etc/ssh/ssh_config',
+	line	=> '	IdentityFile ~/.ssh/school',
 }
