@@ -1,34 +1,18 @@
-import requests
+#!/usr/bin/python3
+"""Module for task 1"""
+
 
 def top_ten(subreddit):
-    """
-    Retrieves the titles of the first 10 hot posts for a given subreddit.
+    """Queries the Reddit API and returns the top 10 hot posts
+    of the subreddit"""
+    import requests
 
-    Args:
-        subreddit (str): The subreddit to search.
-
-    Returns:
-        None if the subreddit is invalid or if an error occurs.
-    """
-    try:
-        # Make a GET request to the Reddit API
-        url = f"https://www.reddit.com/r/{subreddit}/hot.json?limit=10"
-        headers = {
-            "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.3"
-        }
-        response = requests.get(url, headers=headers, allow_redirects=False)
-        response.raise_for_status()  # Raise an exception for non-2xx status codes
-
-        # Check if the response is a valid subreddit
-        if response.status_code == 200:
-            data = response.json()
-            posts = data["data"]["children"]
-
-            # Print the titles of the first 10 hot posts
-            for post in posts[:10]:
-                title = post["data"]["title"]
-                print(title)
-        else:
-            print("None")
-    except requests.exceptions.RequestException as e:
-        print("None")
+    sub_info = requests.get("https://www.reddit.com/r/{}/hot.json?limit=10"
+                            .format(subreddit),
+                            headers={"User-Agent": "My-User-Agent"},
+                            allow_redirects=False)
+    if sub_info.status_code >= 300:
+        print('None')
+    else:
+        [print(child.get("data").get("title"))
+         for child in sub_info.json().get("data").get("children")]
