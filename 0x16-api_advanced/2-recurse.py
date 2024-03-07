@@ -10,8 +10,10 @@ def recurse(subreddit, hot_list=None, after=None):
 
     Args:
         subreddit (str): The subreddit to search.
-        hot_list (list, optional): The list of hot post titles. Defaults to None.
-        after (str, optional): The parameter to get the next set of posts. Defaults to None.
+        hot_list (list, optional): The list of hot
+        post titles. Defaults to None.
+        after (str, optional): The parameter to get the
+        next set of posts. Defaults to None.
 
     Returns:
         list: The list of hot post titles, or None if the subreddit is invalid.
@@ -21,7 +23,8 @@ def recurse(subreddit, hot_list=None, after=None):
     headers = {"User-Agent": "My-User-Agent"}
     params = {"after": after} if after else {}
 
-    response = requests.get(url, headers=headers, params=params, allow_redirects=False)
+    response = requests.get(url, headers=headers,
+                            params=params, allow_redirects=False)
 
     if response.status_code >= 400:
         return None
