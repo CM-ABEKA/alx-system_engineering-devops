@@ -1,6 +1,6 @@
-# kill process killmenow
+# Install flask with pip3
 
-exec { 'pkill':
-  command  => 'pkill killmenow',
-  provider => 'shell',
+package { 'Flask':
+  ensure   => '2.1.0',
+  provider => 'pip3',
 }
