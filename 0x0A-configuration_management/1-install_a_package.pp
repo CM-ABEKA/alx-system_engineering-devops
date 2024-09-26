@@ -1,12 +1,6 @@
-# Ensure pip3 is installed and manage Python packages with pip3
-package { 'python3-pip':
-  ensure => installed,
-}
-
-# Install a specific version of Flask (2.1.0) using pip3
-package { 'Flask':
+#!/usr/bin/pup
+# Sript to Install an especific version of flask (2.1.0)
+package {'flask':
   ensure   => '2.1.0',
-  provider => 'pip3',
-  require  => Package['python3-pip'],
+  provider => 'pip3'
 }
-
